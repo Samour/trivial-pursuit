@@ -2,6 +2,8 @@ import { IBoardConfiguration, IOuterCell, ICellProfile } from 'models/IBoard';
 import { AbstractDrawer } from 'services/draw/AbstractDrawer';
 
 export interface IDrawOuterCell {
+  drawSlice(ctx: CanvasRenderingContext2D, radiusInner: number, radiusOuter: number, thStart: number, thEnd: number,
+    colour: string): void
   draw(ctx: CanvasRenderingContext2D, cell: IOuterCell, profile: ICellProfile): void;
 }
 
@@ -11,37 +13,51 @@ export class DrawOuterCell extends AbstractDrawer implements IDrawOuterCell {
     super();
   }
 
-  draw(ctx: CanvasRenderingContext2D, cell: IOuterCell, profile: ICellProfile): void {
+  drawSlice(ctx: CanvasRenderingContext2D, radiusInner: number, radiusOuter: number, thStart: number,
+    thEnd: number, colour: string): void {
     ctx.beginPath();
     ctx.arc(
       this.boardConfiguration.boardCenter.x,
       this.boardConfiguration.boardCenter.y,
-      this.boardConfiguration.outerTrackInnerRadius,
-      cell.offset,
-      cell.offset + cell.size,
+      radiusInner,
+      thStart,
+      thEnd,
     );
     const v1 = this.polarToCartesian(
       this.boardConfiguration.outerTrackOuterRadius,
-      cell.offset + cell.size,
+      thEnd,
       this.boardConfiguration.boardCenter,
     );
     ctx.lineTo(v1.x, v1.y);
     ctx.arc(
       this.boardConfiguration.boardCenter.x,
       this.boardConfiguration.boardCenter.y,
-      this.boardConfiguration.outerTrackOuterRadius,
-      cell.offset + cell.size,
-      cell.offset,
+      radiusOuter,
+      thEnd,
+      thStart,
       true,
     );
     const v2 = this.polarToCartesian(
       this.boardConfiguration.outerTrackInnerRadius,
-      cell.offset,
+      thStart,
       this.boardConfiguration.boardCenter,
     );
     ctx.lineTo(v2.x, v2.y);
-    ctx.fillStyle = profile.colour;
+    ctx.fillStyle = colour;
     ctx.fill();
+
+  }
+
+  draw(ctx: CanvasRenderingContext2D, cell: IOuterCell, profile: ICellProfile): void {
+    const guttInRad = this.boardConfiguration.trackGutter / this.boardConfiguration.outerTrackInnerRadius;
+    this.drawSlice(
+      ctx,
+      this.boardConfiguration.outerTrackInnerRadius + this.boardConfiguration.trackGutter,
+      this.boardConfiguration.outerTrackOuterRadius - this.boardConfiguration.trackGutter,
+      cell.offset + guttInRad,
+      cell.offset + cell.size - guttInRad,
+      profile.colour,
+    );
   }
 
 }

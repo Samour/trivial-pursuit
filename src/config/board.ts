@@ -5,6 +5,8 @@ export const boardConfiguration: IBoardConfiguration = {
   boardCenter: { x: 300, y: 300 },
   outerTrackInnerRadius: 240,
   outerTrackOuterRadius: 295,
+  trackGutter: 2,
+  gutterColour: 'white',
 };
 
 const OUTER_CELLS_TOTAL = 48;

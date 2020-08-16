@@ -8,6 +8,8 @@ export interface IBoardConfiguration {
   boardCenter: ICoordinate;
   outerTrackInnerRadius: number;
   outerTrackOuterRadius: number;
+  trackGutter: number;
+  gutterColour: string;
 }
 
 export interface IOuterCell {

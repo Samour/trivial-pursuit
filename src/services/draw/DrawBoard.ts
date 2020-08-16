@@ -1,4 +1,4 @@
-import { IBoard, Category, ICellProfile } from 'models/IBoard';
+import { IBoard, Category, ICellProfile, IBoardConfiguration } from 'models/IBoard';
 import { IDrawOuterCell } from 'services/draw/DrawOuterCell';
 
 export interface IDrawBoard {
@@ -7,7 +7,7 @@ export interface IDrawBoard {
 
 export class DrawBoard implements IDrawBoard {
 
-  constructor(private readonly drawOuterCell: IDrawOuterCell) { }
+  constructor(private readonly boardConfiguration: IBoardConfiguration, readonly drawOuterCell: IDrawOuterCell) { }
 
   draw(ctx: CanvasRenderingContext2D, board: IBoard): void {
     const getProfile = (category: Category | undefined, home: string | undefined): ICellProfile | undefined => {
@@ -18,6 +18,14 @@ export class DrawBoard implements IDrawBoard {
       }
     }
 
+    this.drawOuterCell.drawSlice(
+      ctx,
+      this.boardConfiguration.outerTrackInnerRadius,
+      this.boardConfiguration.outerTrackOuterRadius,
+      0,
+      2 * Math.PI,
+      'white',
+    );
     for (let cell of board.outerCells) {
       const profile = getProfile(cell.category, cell.home);
       if (!profile) {
