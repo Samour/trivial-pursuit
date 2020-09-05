@@ -1,10 +1,10 @@
-import { IBoardConfiguration, IOuterCell, ICellProfile } from 'models/IBoard';
+import { IBoardConfiguration, ICell, ICellProfile } from 'models/IBoard';
 import { AbstractDrawer } from 'services/draw/AbstractDrawer';
 
 export interface IDrawOuterCell {
   drawSlice(ctx: CanvasRenderingContext2D, radiusInner: number, radiusOuter: number, thStart: number, thEnd: number,
     colour: string): void
-  draw(ctx: CanvasRenderingContext2D, cell: IOuterCell, profile: ICellProfile): void;
+  draw(ctx: CanvasRenderingContext2D, cell: ICell, profile: ICellProfile): void;
 }
 
 export class DrawOuterCell extends AbstractDrawer implements IDrawOuterCell {
@@ -45,11 +45,10 @@ export class DrawOuterCell extends AbstractDrawer implements IDrawOuterCell {
     ctx.lineTo(v2.x, v2.y);
     ctx.fillStyle = colour;
     ctx.fill();
-
   }
 
-  draw(ctx: CanvasRenderingContext2D, cell: IOuterCell, profile: ICellProfile): void {
-    const guttInRad = this.boardConfiguration.trackGutter / this.boardConfiguration.outerTrackInnerRadius;
+  draw(ctx: CanvasRenderingContext2D, cell: ICell, profile: ICellProfile): void {
+    const guttInRad = this.boardConfiguration.trackGutter / this.boardConfiguration.outerTrackInnerRadius / 2;
     this.drawSlice(
       ctx,
       this.boardConfiguration.outerTrackInnerRadius + this.boardConfiguration.trackGutter,

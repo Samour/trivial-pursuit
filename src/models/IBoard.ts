@@ -12,7 +12,7 @@ export interface IBoardConfiguration {
   gutterColour: string;
 }
 
-export interface IOuterCell {
+export interface ICell {
   category?: Category;
   home?: Player;
   size: number;
@@ -37,7 +37,14 @@ export interface ICellProfile {
   colour: string;
 }
 
+export interface IInnerTrack {
+  angle: number;
+  width: number;
+  cells: ICell[];
+}
+
 export interface IBoard {
-  outerCells: IOuterCell[];
+  innerTracks: IInnerTrack[];
+  outerCells: ICell[];
   profiles: ICellProfile[];
 }

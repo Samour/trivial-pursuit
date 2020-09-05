@@ -9,10 +9,202 @@ export const boardConfiguration: IBoardConfiguration = {
   gutterColour: 'white',
 };
 
+const INNER_TRACK_OFFSET = 50;
+const INNER_TRACK_WIDTH = 62;
+const INNER_TRACK_SIZE = 38;
+
 const OUTER_CELLS_TOTAL = 48;
 const OUTER_CELL_SIZE = 2 * Math.PI / OUTER_CELLS_TOTAL;
 
 export const boardBase: IBoard = {
+  innerTracks: [
+    {
+      angle: Math.PI / 6,
+      width: INNER_TRACK_WIDTH,
+      cells: [
+        {
+          category: Category.SCIENCE,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET,
+        },
+        {
+          category: Category.GEOGRAPHY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.SPORTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 2 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.ENTERTAINMENT,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 3 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.HISTORY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 4 * INNER_TRACK_SIZE,
+        },
+      ],
+    },
+    {
+      angle: Math.PI / 2,
+      width: INNER_TRACK_WIDTH,
+      cells: [
+        {
+          category: Category.ARTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET,
+        },
+        {
+          category: Category.SPORTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.HISTORY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 2 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.SCIENCE,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 3 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.ENTERTAINMENT,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 4 * INNER_TRACK_SIZE,
+        },
+      ],
+    },
+    {
+      angle: 5 * Math.PI / 6,
+      width: INNER_TRACK_WIDTH,
+      cells: [
+        {
+          category: Category.GEOGRAPHY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET,
+        },
+        {
+          category: Category.HISTORY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.ENTERTAINMENT,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 2 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.ARTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 3 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.SCIENCE,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 4 * INNER_TRACK_SIZE,
+        },
+      ],
+    },
+    {
+      angle: 7 * Math.PI / 6,
+      width: INNER_TRACK_WIDTH,
+      cells: [
+        {
+          category: Category.SPORTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET,
+        },
+        {
+          category: Category.ENTERTAINMENT,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.SCIENCE,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 2 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.GEOGRAPHY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 3 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.ARTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 4 * INNER_TRACK_SIZE,
+        },
+      ],
+    },
+    {
+      angle: 3 * Math.PI / 2,
+      width: INNER_TRACK_WIDTH,
+      cells: [
+        {
+          category: Category.HISTORY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET,
+        },
+        {
+          category: Category.SCIENCE,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.ARTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 2 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.SPORTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 3 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.GEOGRAPHY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 4 * INNER_TRACK_SIZE,
+        },
+      ],
+    },
+    {
+      angle: 11 * Math.PI / 6,
+      width: INNER_TRACK_WIDTH,
+      cells: [
+        {
+          category: Category.ENTERTAINMENT,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET,
+        },
+        {
+          category: Category.ARTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.GEOGRAPHY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 2 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.HISTORY,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 3 * INNER_TRACK_SIZE,
+        },
+        {
+          category: Category.SPORTS,
+          size: INNER_TRACK_SIZE,
+          offset: INNER_TRACK_OFFSET + 4 * INNER_TRACK_SIZE,
+        },
+      ],
+    },
+  ],
   outerCells: [
     {
       category: Category.ENTERTAINMENT,
