@@ -29,7 +29,7 @@ export enum Category {
   SPORTS = 'SPORTS',
 }
 
-type Player = 'green' | 'purple' | 'blue' | 'orange' | 'yellow' | 'pink';
+export type Player = 'green' | 'purple' | 'blue' | 'orange' | 'yellow' | 'pink';
 
 export interface ICellProfile {
   category?: Category;

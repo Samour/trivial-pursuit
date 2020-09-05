@@ -11,10 +11,9 @@ export default function Board(): JSX.Element {
   useEffect(() => {
     const ctx = canvasRef.current?.getContext('2d');
     if (ctx) {
-      console.log('DRAW');
       drawBoard.draw(ctx, boardBase);
     }
-  })
+  });
 
   return (
     <canvas id="board" ref={canvasRef}
