@@ -7,6 +7,11 @@ export const boardConfiguration: IBoardConfiguration = {
   outerTrackOuterRadius: 295,
   trackGutter: 2,
   gutterColour: 'white',
+  playerPiece: {
+    innerRadius: 8,
+    border: 2,
+    borderColour: 'black',
+  },
 };
 
 const INNER_TRACK_OFFSET = 50;

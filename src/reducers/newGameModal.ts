@@ -14,7 +14,7 @@ export default function (state: INewGameModal | undefined, event: IEvent): INewG
       ...state,
       open: true,
     };
-  } else if (event.type === EventType.CLOSE_NEW_GAME_MODAL) {
+  } else if (event.type === EventType.CLOSE_NEW_GAME_MODAL || event.type === EventType.START_NEW_GAME) {
     return defaultState;
   } else if (event.type === EventType.NEW_GAME_SELECT_PLAYER) {
     const { player, selected } = event as INewGameSelectPlayerEvent;

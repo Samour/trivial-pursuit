@@ -10,6 +10,11 @@ export interface IBoardConfiguration {
   outerTrackOuterRadius: number;
   trackGutter: number;
   gutterColour: string;
+  playerPiece: {
+    innerRadius: number;
+    border: number;
+    borderColour: string;
+  };
 }
 
 export interface ICell {

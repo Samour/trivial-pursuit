@@ -6,6 +6,7 @@ import PlayerSelect from './PlayerSelect';
 import { Player } from 'models/IBoard';
 import { IState } from 'state/IState';
 import { closeNewGameModalEvent } from 'events/CloseNewGameModalEvent';
+import { gameManagerService } from 'services/GameManagerService';
 
 const players: Player[] = [
   'green',
@@ -43,7 +44,7 @@ function NewGameModal({ open, closeModal }: ILocalState & IActions): JSX.Element
         </div>
         <div className="controls">
           <button onClick={closeModal}>Cancel</button>
-          <button>Start Game</button>
+          <button onClick={() => gameManagerService.startNewGame()}>Start Game</button>
         </div>
       </div>
     </Modal>
