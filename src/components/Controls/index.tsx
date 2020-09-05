@@ -13,8 +13,10 @@ const mapActions = (dispatch: Dispatch): IActions => ({
 
 function Controls({ openNewGameModal }: IActions): JSX.Element {
   return (
-    <div className="controls main-controls">
-      <button onClick={openNewGameModal}>New Game</button>
+    <div className="main-controls">
+      <div className="controls">
+        <button onClick={openNewGameModal}>New Game</button>
+      </div>
     </div>
   );
 }

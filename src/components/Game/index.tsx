@@ -8,7 +8,7 @@ import { store } from 'store';
 export default function Game(): JSX.Element {
   return (
     <Provider store={store}>
-      <div>
+      <div className="game-container">
         <Controls />
         <Board />
         <NewGameModal />

@@ -1,14 +1,14 @@
 import { IBoardConfiguration, IBoard, Category } from 'models/IBoard';
 
 export const boardConfiguration: IBoardConfiguration = {
-  boardSize: { width: 600, height: 600 },
-  boardCenter: { x: 300, y: 300 },
-  outerTrackInnerRadius: 240,
-  outerTrackOuterRadius: 295,
+  boardSize: { width: 700, height: 700 },
+  boardCenter: { x: 350, y: 350 },
+  outerTrackInnerRadius: 280,
+  outerTrackOuterRadius: 345,
   trackGutter: 2,
   gutterColour: 'white',
   playerPiece: {
-    innerRadius: 8,
+    innerRadius: 12,
     border: 2,
     borderColour: 'black',
   },
@@ -16,7 +16,7 @@ export const boardConfiguration: IBoardConfiguration = {
 
 const INNER_TRACK_OFFSET = 50;
 const INNER_TRACK_WIDTH = 62;
-const INNER_TRACK_SIZE = 38;
+const INNER_TRACK_SIZE = 46;
 
 const OUTER_CELLS_TOTAL = 48;
 const OUTER_CELL_SIZE = 2 * Math.PI / OUTER_CELLS_TOTAL;
