@@ -96,3 +96,12 @@ body {
     margin-left: 15px;
   }
 }
+
+.game-session {
+  padding: 10px;
+
+  pre, input {
+    display: inline-flex;
+    margin-left: 20px;
+  }
+}
