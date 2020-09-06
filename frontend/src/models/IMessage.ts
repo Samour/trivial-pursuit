@@ -2,18 +2,14 @@ import { IEvent } from 'events/IEvent';
 
 export enum MessageType {
   REDUX_MUTATION = 'REDUX_MUTATION',
-}
-
-export interface IMessage {
-  type: MessageType;
+  REQUEST_GAME_STATE = 'REQUEST_GAME_STATE',
 }
 
 export interface IReduxMutationMessage {
-  type: MessageType.REDUX_MUTATION;
   event: IEvent;
 }
 
-export interface IReceivedMessage {
+export interface IReceivedMessage<T> {
   sender: string;
-  message: IMessage;
+  message: T;
 }
