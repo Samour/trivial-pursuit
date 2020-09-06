@@ -20,7 +20,7 @@ boards.on('connection', (socket) => {
   socket.on('message', (message: IIncomingMessage) => {
     console.log(`Message received from client ${sessionId}`);
     console.log(message);
-    socket.broadcast.emit('broadcast', {
+    socket.broadcast.nsp.emit('message', {
       sender: sessionId,
       message,
     });

@@ -1,5 +1,7 @@
 import io from 'socket.io-client';
 import { store } from 'store';
+import { IReceivedMessage, MessageType, IReduxMutationMessage } from 'models/IMessage';
+import { IEvent } from 'events/IEvent';
 import { connectionNamespaceEvent } from 'events/ConnectionNamespaceEvent';
 import { configProvider } from 'services/configProvider';
 
@@ -35,8 +37,23 @@ class CommunicationService {
     }
 
     this.namespace = namespace || this.generateNamespace();
-    this.socket = io(`${config.baseUrl}/${namespace}`);
+    this.socket = io(`${config.baseUrl}/${this.namespace}`);
     store.dispatch(connectionNamespaceEvent(this.namespace));
+
+    this.socket.on('message', (message: IReceivedMessage) => {
+      if (message.message.type === MessageType.REDUX_MUTATION) {
+        const { event } = message.message as IReduxMutationMessage;
+        store.dispatch(event);
+      }
+    });
+  }
+
+  publishMutation(event: IEvent): void {
+    const message: IReduxMutationMessage = {
+      type: MessageType.REDUX_MUTATION,
+      event,
+    };
+    this.socket?.emit('message', message);
   }
 
   disconnect(): void {

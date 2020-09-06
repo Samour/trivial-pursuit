@@ -1,12 +1,11 @@
 import React from 'react';
-import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import SelectableRoundel from 'components/SelectableRoundel';
 import { Player, Category } from 'models/IBoard';
 import { IState } from 'state/IState';
-import { assignPlayerCategoryEvent } from 'events/AssignPlayerCategoryEvent';
 import { getProfile } from 'utils/profileUtils';
 import { winnableCategories, boardBase } from 'config/board';
+import { gameManagerService } from 'services/GameManagerService';
 
 interface ILocalState {
   player: Player | null;
@@ -20,15 +19,7 @@ const mapState = (state: IState): ILocalState => ({
     .find((cat) => cat === c),
 });
 
-interface IActions {
-  assignCategory: (player: Player, category: Category, hasCategory: boolean) => void;
-}
-
-const mapActions = (dispatch: Dispatch): IActions => ({
-  assignCategory: (p, c, has) => dispatch(assignPlayerCategoryEvent(p, c, has)),
-});
-
-function Categories({ player, hasCategory, assignCategory }: ILocalState & IActions): JSX.Element | null {
+function Categories({ player, hasCategory }: ILocalState): JSX.Element | null {
   if (!player) {
     return null;
   }
@@ -36,7 +27,7 @@ function Categories({ player, hasCategory, assignCategory }: ILocalState & IActi
   const categories = winnableCategories.map((c) => (
     <SelectableRoundel colour={getProfile(boardBase.profiles, c, undefined)?.colour || 'white'}
       checked={hasCategory(c)}
-      onChange={(ch) => assignCategory(player, c, ch)} />
+      onChange={(ch) => gameManagerService.assignPlayerCategory(player, c, ch)} />
   ));
 
   return (
@@ -46,4 +37,4 @@ function Categories({ player, hasCategory, assignCategory }: ILocalState & IActi
   );
 }
 
-export default connect(mapState, mapActions)(Categories);
+export default connect(mapState)(Categories);

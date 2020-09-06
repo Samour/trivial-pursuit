@@ -1,9 +1,10 @@
 import { ICoordinate } from 'models/IBoard';
 import { boardConfiguration } from 'config/board';
-import { store } from 'store';
 import { pickUpPieceEvent } from 'events/PickUpPieceEvent';
 import { setDownPieceEvent } from 'events/SetDownPieceEvent';
 import { positionPieceEvent } from 'events/PositionPieceEvent';
+import { communicationService } from 'services/CommunicationService';
+import { store } from 'store';
 
 class PlayerEventHandlerService {
 
@@ -43,7 +44,9 @@ class PlayerEventHandlerService {
       return;
     }
 
-    store.dispatch(positionPieceEvent(piece, movePos));
+    const event = positionPieceEvent(piece, movePos);
+    store.dispatch(event);
+    communicationService.publishMutation(event);
   }
 }
 

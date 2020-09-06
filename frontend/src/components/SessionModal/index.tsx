@@ -55,6 +55,7 @@ function SessionModal({
 
   const onJoinSession = () => {
     editNamespace(false);
+    closeModal();
     communicationService.connect(namespace);
   };
 

@@ -1,7 +1,9 @@
 import { store } from 'store';
-import { ICoordinate, Player } from 'models/IBoard';
+import { ICoordinate, Player, Category } from 'models/IBoard';
 import { startNewGameEvent } from 'events/StartNewGameEvent';
+import { assignPlayerCategoryEvent } from 'events/AssignPlayerCategoryEvent';
 import { boardBase, boardConfiguration } from 'config/board';
+import { communicationService } from 'services/CommunicationService';
 import { AbstractDrawer } from './draw/AbstractDrawer';
 
 class GameManagerService extends AbstractDrawer {
@@ -21,14 +23,22 @@ class GameManagerService extends AbstractDrawer {
 
   startNewGame(): void {
     const { selectedPlayers } = store.getState().newGameModal;
-
-    store.dispatch(startNewGameEvent({
+    const event = startNewGameEvent({
       playerPieces: selectedPlayers.map((player) => ({
         player,
         position: this.determinePlayerStartPosition(player),
         categories: [],
       })),
-    }));
+    });
+
+    store.dispatch(event);
+    communicationService.publishMutation(event);
+  }
+
+  assignPlayerCategory(player: Player, category: Category, hasCategory: boolean): void {
+    const event = assignPlayerCategoryEvent(player, category, hasCategory);
+    store.dispatch(event);
+    communicationService.publishMutation(event);
   }
 }
 
