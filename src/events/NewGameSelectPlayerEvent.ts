@@ -1,5 +1,5 @@
-import { EventType } from './IEvent';
 import { Player } from 'models/IBoard';
+import { EventType } from './IEvent';
 
 export interface INewGameSelectPlayerEvent {
   type: EventType.NEW_GAME_SELECT_PLAYER,

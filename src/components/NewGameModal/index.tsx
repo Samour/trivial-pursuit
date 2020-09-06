@@ -39,7 +39,7 @@ function NewGameModal({ open, closeModal }: ILocalState & IActions): JSX.Element
   return (
     <Modal open={open} title='New Game'>
       <div className="new-game-modal">
-        <div className="select-players">
+        <div className="selectable-roundel-row">
           {playerEls}
         </div>
         <div className="controls">

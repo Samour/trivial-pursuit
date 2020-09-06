@@ -1,5 +1,5 @@
-import { EventType } from './IEvent';
 import { Player } from 'models/IBoard';
+import { EventType } from './IEvent';
 
 export interface IPickUpPieceEvent {
   type: EventType.PICK_UP_PIECE;

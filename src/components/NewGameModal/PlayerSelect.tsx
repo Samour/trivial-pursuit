@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import SelectableRoundel from 'components/SelectableRoundel';
 import { Player } from 'models/IBoard';
 import { IState } from 'state/IState';
 import { boardBase } from 'config/board';
@@ -40,12 +41,9 @@ const mapActions = (dispatch: Dispatch): IActions => ({
 function PlayerSelect({ player, selectedPlayers, selectPlayer }: IProps & ILocalState & IActions): JSX.Element {
   const selected = !!selectedPlayers.find(p => p === player);
 
-  const backgroundColor = players.find((p) => p.player === player)?.colour;
+  const colour = players.find((p) => p.player === player)?.colour || 'white';
   return (
-    <div className="player-select">
-      <input type="checkbox" checked={selected} onChange={(e) => selectPlayer(player, e.target.checked)} />
-      <div className="player-roundel" style={{ backgroundColor }} onClick={() => selectPlayer(player, !selected)}></div>
-    </div>
+    <SelectableRoundel colour={colour} checked={selected} onChange={(c) => selectPlayer(player, c)} />
   );
 }
 

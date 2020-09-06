@@ -30,7 +30,9 @@ body {
 
 .player-piece-container {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
+  width: 400px;
 
   #playerPiece {
     margin: auto;
@@ -69,27 +71,28 @@ body {
 .new-game-modal {
   margin: 50px 0;
 
-  .select-players {
-    display: flex;
-    justify-content: space-between;
-
-    .player-select {
-      margin: 0 30px;
-      display: flex;
-      align-items: center;
-
-      .player-roundel {
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
-        margin-left: 15px;
-      }
-    }
-  }
-
   .controls {
     width: 50%;
     margin-left: 25%;
     margin-top: 40px;
+  }
+}
+
+.selectable-roundel-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.selectable-roundel-container {
+  margin: 10px 30px;
+  display: flex;
+  align-items: center;
+
+  .selectable-roundel {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 15px;
   }
 }

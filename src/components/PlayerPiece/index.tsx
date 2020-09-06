@@ -1,5 +1,6 @@
 import React, { useEffect, createRef, RefObject } from 'react';
 import { connect } from 'react-redux';
+import Categories from './Categories';
 import { IPlayerPiece } from 'models/IGame';
 import { IState } from 'state/IState';
 import drawPlayerPieceDetailProvider from 'services/drawPlayerPieceDetailProvider';
@@ -30,6 +31,7 @@ function PlayerPiece({ player }: ILocalState): JSX.Element | null {
       <canvas id="playerPiece" ref={canvasRef}
         width={playerPieceDisplayConfig.width}
         height={playerPieceDisplayConfig.height} />
+      <Categories />
     </div>
   );
 }

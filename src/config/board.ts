@@ -479,3 +479,12 @@ export const boardBase: IBoard = {
     },
   ],
 };
+
+export const winnableCategories: Category[] = [
+  Category.ARTS,
+  Category.ENTERTAINMENT,
+  Category.GEOGRAPHY,
+  Category.HISTORY,
+  Category.SCIENCE,
+  Category.SPORTS,
+];
