@@ -26,6 +26,7 @@ class GameManagerService extends AbstractDrawer {
       playerPieces: selectedPlayers.map((player) => ({
         player,
         position: this.determinePlayerStartPosition(player),
+        categories: [],
       })),
     }));
   }

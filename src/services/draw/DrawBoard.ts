@@ -1,7 +1,6 @@
-import { IBoard, ICellProfile, IBoardConfiguration } from 'models/IBoard';
+import { IBoard, IBoardConfiguration } from 'models/IBoard';
 import { IGame } from 'models/IGame';
 import { IDrawOuterTrack } from 'services/draw/DrawOuterTrack';
-import { getProfile } from 'utils/profileUtils';
 import { IDrawInnerTrack } from './DrawInnerTrack';
 import { IDrawPlayerPiece } from './DrawPlayerPiece';
 
@@ -20,8 +19,8 @@ export class DrawBoard implements IDrawBoard {
     board.innerTracks.forEach((t) => this.drawInnerTrack.draw(ctx, t, board.profiles));
     game.playerPieces.forEach((p) => this.drawPlayerPiece.draw(
       ctx,
-      p.position,
-      getProfile(board.profiles, undefined, p.player) as ICellProfile,
+      p,
+      board.profiles,
     ));
   }
 

@@ -8,9 +8,11 @@ export const boardConfiguration: IBoardConfiguration = {
   trackGutter: 2,
   gutterColour: 'white',
   playerPiece: {
-    innerRadius: 12,
+    innerRadius: 8,
+    playerRing: 4,
     border: 2,
     borderColour: 'black',
+    emptyBg: 'white',
   },
 };
 

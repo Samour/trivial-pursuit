@@ -10,7 +10,7 @@ export default function provider(): IDrawBoard {
   return new DrawBoard(
     new DrawOuterTrack(boardConfiguration, new DrawOuterCell(boardConfiguration)),
     new DrawInnerTrack(boardConfiguration, new DrawInnerCell(boardConfiguration)),
-    new DrawPlayerPiece(boardConfiguration),
+    new DrawPlayerPiece(boardConfiguration.playerPiece),
     boardConfiguration,
   );
 }

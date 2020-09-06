@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import PlayerPiece from 'components/PlayerPiece';
 import { openNewGameModalEvent } from 'events/OpenNewGameModalEvent';
 
 interface IActions {
@@ -17,6 +18,7 @@ function Controls({ openNewGameModal }: IActions): JSX.Element {
       <div className="controls">
         <button onClick={openNewGameModal}>New Game</button>
       </div>
+      <PlayerPiece />
     </div>
   );
 }

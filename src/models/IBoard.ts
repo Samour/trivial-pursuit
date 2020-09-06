@@ -3,6 +3,14 @@ export interface ICoordinate {
   y: number;
 }
 
+export interface IPlayerPieceConfiguration {
+  innerRadius: number;
+  playerRing: number;
+  border: number;
+  borderColour: string;
+  emptyBg: string;
+}
+
 export interface IBoardConfiguration {
   boardSize: { width: number; height: number };
   boardCenter: ICoordinate;
@@ -10,11 +18,12 @@ export interface IBoardConfiguration {
   outerTrackOuterRadius: number;
   trackGutter: number;
   gutterColour: string;
-  playerPiece: {
-    innerRadius: number;
-    border: number;
-    borderColour: string;
-  };
+  playerPiece: IPlayerPieceConfiguration;
+}
+
+export interface IPlayerPieceDisplayConfiguration extends IPlayerPieceConfiguration {
+  width: number;
+  height: number;
 }
 
 export interface ICell {
